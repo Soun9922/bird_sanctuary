@@ -1,6 +1,7 @@
 package com.bl.bird_sanctuary;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     BirdRepository birdRepository = new BirdRepository();
@@ -27,7 +28,6 @@ public class Main {
                 userInterface.printBird(birdList);
                 break;
             case 3:
-                System.out.println("All Birds have been removed");
                 removeBird();
                 break;
             case 4:
@@ -45,37 +45,37 @@ public class Main {
         duck.name = "Duck";
         duck.Id = "DU001";
         duck.age = 5;
-        duck.colour = "Off-White";
+        duck.colour = Bird.Colour.WHITE;
 
         Eagle eagle = new Eagle();
         eagle.name = "Eagle";
         eagle.Id = "EA001";
         eagle.age = 4;
-        eagle.colour = "Black";
+        eagle.colour = Bird.Colour.BLACK_WHITE;
 
         Ostrich ostrich = new Ostrich();
         ostrich.name = "Ostrich";
         ostrich.Id = "OS001";
         ostrich.age = 4;
-        ostrich.colour = "black & White";
+        ostrich.colour = Bird.Colour.BLACK;
 
         Parrot parrot = new Parrot();
         parrot.name = "Parrot";
         parrot.Id = "PA001";
         parrot.age = 2;
-        parrot.colour = "Green";
+        parrot.colour = Bird.Colour.GREEN;
 
         Peacock peacock = new Peacock();
         peacock.name = "Peacock";
         peacock.Id = "PE001";
         peacock.age = 1;
-        peacock.colour = "Blue";
+        peacock.colour = Bird.Colour.BLUE;
 
         Penguin penguin = new Penguin();
         penguin.name = "Penguin";
         penguin.Id = "PN001";
         penguin.age = 3;
-        penguin.colour = "Black & Yellow";
+        penguin.colour = Bird.Colour.BLACK_WHITE;
 
         birdRepository.add(duck);
         birdRepository.add(eagle);
@@ -86,19 +86,12 @@ public class Main {
     }
 
     void removeBird() {
-        Duck duck = new Duck();
-        Eagle eagle = new Eagle();
-        Ostrich ostrich = new Ostrich();
-        Parrot parrot = new Parrot();
-        Peacock peacock = new Peacock();
-        Penguin penguin = new Penguin();
-
-        birdRepository.remove(duck);
-        birdRepository.remove(eagle);
-        birdRepository.remove(ostrich);
-        birdRepository.remove(parrot);
-        birdRepository.remove(peacock);
-        birdRepository.remove(penguin);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the Bird Id to be removed: ");
+        String birdId = scanner.next();
+        birdRepository.getBird(birdId);
+        Bird bird = birdRepository.getBird(birdId);
+        birdRepository.remove(bird);
     }
 }
 

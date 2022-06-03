@@ -28,26 +28,20 @@ public class BirdRepository {
     void add(Peacock peacock) {
         birdList.add(peacock);
     }
-    void add(Penguin penguin){
+
+    void add(Penguin penguin) {
         birdList.add(penguin);
     }
 
-    void remove(Parrot parrot) {
-        birdList.remove(parrot);
+    void remove(Bird bird) {
+        birdList.remove(bird);
     }
-    void remove(Eagle eagle) {
-        birdList.remove(eagle);
-    }
-    void remove(Duck duck) {
-        birdList.remove(duck);
-    }
-    void remove(Ostrich ostrich) {
-        birdList.remove(ostrich);
-    }
-    void remove(Peacock peacock) {
-        birdList.remove(peacock);
-    }
-    void remove(Penguin penguin){
-        birdList.remove(penguin);
+    public Bird getBird(String birdId){
+        for (int i = 0; i < birdList.size(); i++) {
+            if(birdList.get(i).equals(birdId)){
+                return birdList.get(i);
+            }
+        }
+        return null;
     }
 }
